@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BioDraft Lab | 논문 분석·집필 대행 서비스</title>
+<style>
+  :root{
+    --navy:#0f2942;
+    --navy-dark:#0a1c30;
+    --teal:#1c8c7c;
+    --teal-light:#e6f4f1;
+    --accent:#e8834a;
+    --gray-900:#1a2530;
+    --gray-600:#5a6b78;
+    --gray-300:#dbe3e8;
+    --gray-100:#f6f9fa;
+    --white:#ffffff;
+    --radius:14px;
+    --shadow:0 8px 30px rgba(15,41,66,0.08);
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:"Pretendard","Apple SD Gothic Neo","Segoe UI",Malgun Gothic,sans-serif;
+    color:var(--gray-900);
+    background:var(--white);
+    line-height:1.65;
+    font-size:16px;
+  }
+  a{color:inherit;text-decoration:none;}
+  ul{list-style:none;}
+  img{max-width:100%;display:block;}
+  .container{max-width:1140px;margin:0 auto;padding:0 24px;}
+  section{padding:96px 0;}
+  .section-tag{
+    display:inline-block;
+    font-size:13px;
+    font-weight:700;
+    color:var(--teal);
+    background:var(--teal-light);
+    padding:6px 14px;
+    border-radius:999px;
+    letter-spacing:.02em;
+    margin-bottom:16px;
+  }
+  h1,h2,h3,h4{font-weight:800;color:var(--navy);letter-spacing:-0.02em;}
+  h2{font-size:34px;margin-bottom:14px;}
+  h2 + .lead{color:var(--gray-600);font-size:16.5px;max-width:640px;margin-bottom:48px;}
+  .center{text-align:center;margin-left:auto;margin-right:auto;}
+  .btn{
+    display:inline-flex;align-items:center;gap:8px;
+    padding:14px 28px;border-radius:10px;font-weight:700;font-size:15px;
+    cursor:pointer;border:none;transition:all .15s ease;
+  }
+  .btn-primary{background:var(--teal);color:var(--white);}
+  .btn-primary:hover{background:#166b5f;transform:translateY(-1px);}
+  .btn-outline{background:transparent;color:var(--white);border:1.5px solid rgba(255,255,255,.55);}
+  .btn-outline:hover{background:rgba(255,255,255,.12);}
+  .btn-dark-outline{background:transparent;color:var(--navy);border:1.5px solid var(--gray-300);}
+  .btn-dark-outline:hover{border-color:var(--teal);color:var(--teal);}
+
+  /* Header */
+  header{
+    position:sticky;top:0;z-index:100;
+    background:rgba(255,255,255,.92);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--gray-300);
+  }
+  .nav-wrap{display:flex;align-items:center;justify-content:space-between;padding:16px 24px;max-width:1140px;margin:0 auto;}
+  .logo{display:flex;align-items:center;gap:10px;font-weight:800;font-size:19px;color:var(--navy);}
+  .logo-mark{width:32px;height:32px;border-radius:9px;background:linear-gradient(135deg,var(--teal),var(--navy));flex-shrink:0;}
+  nav ul{display:flex;gap:34px;font-size:14.5px;font-weight:600;color:var(--gray-600);}
+  nav ul a:hover{color:var(--teal);}
+  .nav-cta{display:flex;align-items:center;gap:14px;}
+  .nav-cta .btn{padding:10px 20px;font-size:14px;}
+  .hamburger{display:none;font-size:26px;background:none;border:none;color:var(--navy);cursor:pointer;}
+
+  /* Hero */
+  .hero{
+    background:radial-gradient(1200px 500px at 80% -10%, #143a5a 0%, var(--navy) 45%, var(--navy-dark) 100%);
+    color:var(--white);
+    padding:110px 0 90px;
+    position:relative;
+    overflow:hidden;
+  }
+  .hero::after{
+    content:"";position:absolute;right:-120px;top:-80px;width:420px;height:420px;
+    background:radial-gradient(circle,rgba(28,140,124,.35),transparent 70%);
+  }
+  .hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:56px;align-items:center;position:relative;z-index:1;}
+  .hero-tag{
+    display:inline-block;font-size:13px;font-weight:700;color:#9fe3d4;
+    background:rgba(28,140,124,.18);border:1px solid rgba(28,140,124,.4);
+    padding:6px 14px;border-radius:999px;margin-bottom:22px;
+  }
+  .hero h1{font-size:44px;color:var(--white);line-height:1.32;margin-bottom:20px;}
+  .hero h1 span{color:#5fd7bf;}
+  .hero p.sub{font-size:17px;color:#c7d4e0;max-width:520px;margin-bottom:34px;}
+  .hero-cta{display:flex;gap:14px;margin-bottom:40px;}
+  .hero-stats{display:flex;gap:36px;padding-top:28px;border-top:1px solid rgba(255,255,255,.15);}
+  .hero-stats div b{display:block;font-size:24px;color:var(--white);}
+  .hero-stats div span{font-size:13px;color:#9fb3c6;}
+  .hero-card{
+    background:rgba(255,255,255,.06);
+    border:1px solid rgba(255,255,255,.18);
+    border-radius:var(--radius);
+    padding:28px;
+    backdrop-filter:blur(6px);
+  }
+  .hero-card h4{color:var(--white);font-size:15px;margin-bottom:16px;}
+  .hero-step{display:flex;gap:14px;padding:12px 0;border-bottom:1px solid rgba(255,255,255,.1);}
+  .hero-step:last-child{border-bottom:none;}
+  .hero-step .n{
+    width:26px;height:26px;border-radius:50%;background:var(--teal);color:#fff;
+    font-size:12.5px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;
+  }
+  .hero-step p{font-size:14px;color:#dbe6ef;}
+  .hero-step small{color:#93a8bc;font-size:12.5px;}
+
+  /* Pain points */
+  .pain{background:var(--gray-100);}
+  .pain-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;}
+  .pain-card{background:var(--white);border:1px solid var(--gray-300);border-radius:var(--radius);padding:26px 22px;}
+  .pain-card .icon{font-size:26px;margin-bottom:14px;}
+  .pain-card h4{font-size:15.5px;margin-bottom:8px;color:var(--navy);}
+  .pain-card p{font-size:13.8px;color:var(--gray-600);}
+
+  /* Services */
+  .service-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
+  .service-card{
+    border:1px solid var(--gray-300);border-radius:var(--radius);padding:32px 28px;
+    transition:box-shadow .2s ease, transform .2s ease;
+  }
+  .service-card:hover{box-shadow:var(--shadow);transform:translateY(-3px);}
+  .service-card .badge{
+    display:inline-block;font-size:12px;font-weight:700;color:var(--teal);
+    background:var(--teal-light);padding:4px 10px;border-radius:6px;margin-bottom:16px;
+  }
+  .service-card h3{font-size:19px;margin-bottom:10px;}
+  .service-card p.desc{color:var(--gray-600);font-size:14.3px;margin-bottom:18px;}
+  .service-card ul li{
+    font-size:13.6px;color:var(--gray-900);padding:6px 0;padding-left:20px;position:relative;
+  }
+  .service-card ul li::before{content:"✓";position:absolute;left:0;color:var(--teal);font-weight:700;}
+
+  /* Process */
+  .process{background:var(--navy-dark);color:var(--white);}
+  .process h2, .process .lead{color:var(--white);}
+  .process .lead{color:#a9bdcf;}
+  .process-track{display:grid;grid-template-columns:repeat(6,1fr);gap:16px;position:relative;}
+  .process-step{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);border-radius:12px;padding:22px 16px;}
+  .process-step .num{font-size:26px;font-weight:800;color:var(--teal);margin-bottom:10px;}
+  .process-step h4{color:var(--white);font-size:14.5px;margin-bottom:8px;}
+  .process-step p{font-size:12.8px;color:#a9bdcf;}
+
+  /* Onsite consulting */
+  .onsite{background:linear-gradient(120deg,var(--teal-light) 0%, var(--white) 60%);}
+  .onsite-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center;}
+  .onsite-list li{
+    display:flex;gap:14px;padding:16px 0;border-bottom:1px dashed var(--gray-300);
+  }
+  .onsite-list li:last-child{border-bottom:none;}
+  .onsite-list .ico{
+    width:40px;height:40px;border-radius:10px;background:var(--teal);color:#fff;
+    display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;
+  }
+  .onsite-list h4{font-size:15.5px;margin-bottom:4px;}
+  .onsite-list p{font-size:13.6px;color:var(--gray-600);}
+  .onsite-visual{
+    background:var(--navy);border-radius:var(--radius);padding:36px;color:#fff;
+    box-shadow:var(--shadow);
+  }
+  .onsite-visual .tag{color:#9fe3d4;font-size:12.5px;font-weight:700;margin-bottom:10px;display:block;}
+  .onsite-visual h3{color:#fff;font-size:22px;margin-bottom:14px;}
+  .onsite-visual p{color:#c7d4e0;font-size:14px;margin-bottom:22px;}
+
+  /* Pricing */
+  .pricing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
+  .price-card{border:1px solid var(--gray-300);border-radius:var(--radius);padding:32px 26px;position:relative;}
+  .price-card.featured{border:2px solid var(--teal);box-shadow:var(--shadow);}
+  .price-card .flag{
+    position:absolute;top:-13px;left:26px;background:var(--teal);color:#fff;font-size:12px;
+    font-weight:700;padding:4px 12px;border-radius:999px;
+  }
+  .price-card h3{font-size:18px;margin-bottom:6px;}
+  .price-card .price{font-size:15px;color:var(--gray-600);margin-bottom:20px;}
+  .price-card .price b{font-size:26px;color:var(--navy);display:block;}
+  .price-card ul{margin-bottom:24px;}
+  .price-card ul li{font-size:13.6px;padding:7px 0;padding-left:20px;position:relative;color:var(--gray-900);}
+  .price-card ul li::before{content:"✓";position:absolute;left:0;color:var(--teal);font-weight:700;}
+  .price-note{margin-top:24px;font-size:13px;color:var(--gray-600);text-align:center;}
+
+  /* Form */
+  .apply{background:var(--gray-100);}
+  .apply-wrap{display:grid;grid-template-columns:.85fr 1.15fr;gap:56px;}
+  .apply-info h2{margin-bottom:16px;}
+  .apply-info p{color:var(--gray-600);font-size:14.6px;margin-bottom:26px;}
+  .apply-info .contact-line{display:flex;gap:12px;align-items:center;padding:10px 0;font-size:14.3px;}
+  .apply-info .contact-line b{color:var(--navy);}
+  form{background:var(--white);border-radius:var(--radius);border:1px solid var(--gray-300);padding:34px;box-shadow:var(--shadow);}
+  .form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px;}
+  .form-group{margin-bottom:16px;}
+  .form-group.full{grid-column:1/-1;}
+  label{display:block;font-size:13.4px;font-weight:700;color:var(--navy);margin-bottom:6px;}
+  input[type=text],input[type=email],input[type=tel],select,textarea{
+    width:100%;padding:11px 13px;border:1px solid var(--gray-300);border-radius:8px;font-size:14.3px;
+    font-family:inherit;color:var(--gray-900);background:#fff;
+  }
+  input:focus,select:focus,textarea:focus{outline:none;border-color:var(--teal);}
+  textarea{resize:vertical;min-height:96px;}
+  .checkbox-group{display:flex;flex-wrap:wrap;gap:10px;margin-top:6px;}
+  .chip{
+    font-size:13px;padding:8px 14px;border:1px solid var(--gray-300);border-radius:999px;cursor:pointer;
+    color:var(--gray-600);transition:all .15s ease;
+  }
+  input[type=checkbox]{display:none;}
+  input[type=checkbox]:checked + .chip{background:var(--teal);color:#fff;border-color:var(--teal);}
+  .file-note{
+    font-size:12.6px;color:var(--gray-600);background:var(--teal-light);border-radius:8px;padding:12px 14px;margin-top:6px;
+  }
+  form .btn-primary{width:100%;justify-content:center;margin-top:8px;padding:15px;font-size:15.5px;}
+  .form-disclaimer{font-size:12px;color:var(--gray-600);margin-top:14px;text-align:center;}
+
+  /* Privacy / IRB consent */
+  .privacy-details{
+    border:1px solid var(--gray-300);border-radius:8px;margin-bottom:10px;overflow:hidden;
+  }
+  .privacy-details summary{
+    list-style:none;cursor:pointer;padding:10px 14px;font-size:13.2px;font-weight:700;color:var(--navy);
+    display:flex;justify-content:space-between;align-items:center;background:var(--gray-100);
+  }
+  .privacy-details summary::-webkit-details-marker{display:none;}
+  .privacy-details summary .toggle{color:var(--teal);font-weight:700;font-size:12px;}
+  .privacy-box{padding:14px;font-size:12.6px;color:var(--gray-600);line-height:1.7;}
+  .privacy-box p{margin-bottom:6px;}
+  .privacy-box b{color:var(--navy);}
+  .consent-check{
+    display:flex;align-items:flex-start;gap:10px;font-size:13.4px;color:var(--gray-900);
+    padding:4px 2px;cursor:pointer;
+  }
+  .consent-check input[type=checkbox]{
+    display:inline-block;width:16px;height:16px;margin-top:2px;flex-shrink:0;accent-color:var(--teal);
+  }
+  .irb-note{
+    font-size:12.6px;color:var(--gray-600);background:#fff6ee;border:1px solid #f2d9c2;border-radius:8px;
+    padding:12px 14px;margin-top:4px;
+  }
+
+  /* FAQ */
+  .faq-item{border-bottom:1px solid var(--gray-300);padding:22px 0;}
+  .faq-item summary{
+    font-weight:700;font-size:15.5px;color:var(--navy);cursor:pointer;list-style:none;
+    display:flex;justify-content:space-between;align-items:center;
+  }
+  .faq-item summary::-webkit-details-marker{display:none;}
+  .faq-item summary::after{content:"+";font-size:20px;color:var(--teal);font-weight:400;}
+  .faq-item[open] summary::after{content:"–";}
+  .faq-item p{margin-top:12px;color:var(--gray-600);font-size:14.3px;line-height:1.7;}
+
+  /* Footer */
+  footer{background:var(--navy-dark);color:#a9bdcf;padding:56px 0 28px;font-size:13.6px;}
+  .footer-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:32px;margin-bottom:36px;}
+  .footer-grid h5{color:#fff;font-size:14px;margin-bottom:14px;}
+  .footer-grid .logo{color:#fff;margin-bottom:12px;}
+  .footer-grid p{line-height:1.8;}
+  .footer-grid ul li{padding:5px 0;}
+  .footer-grid ul li a:hover{color:#fff;}
+  .footer-bottom{border-top:1px solid rgba(255,255,255,.1);padding-top:20px;display:flex;justify-content:space-between;color:#7d92a5;font-size:12.6px;}
+
+  @media (max-width:960px){
+    nav, .nav-cta .btn-dark-outline{display:none;}
+    .hamburger{display:block;}
+    .hero-grid{grid-template-columns:1fr;}
+    .pain-grid{grid-template-columns:repeat(2,1fr);}
+    .service-grid{grid-template-columns:1fr;}
+    .process-track{grid-template-columns:repeat(3,1fr);}
+    .onsite-grid{grid-template-columns:1fr;}
+    .pricing-grid{grid-template-columns:1fr;}
+    .apply-wrap{grid-template-columns:1fr;}
+    .footer-grid{grid-template-columns:1fr 1fr;}
+    h2{font-size:27px;}
+    .hero h1{font-size:32px;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="nav-wrap">
+    <a href="#top" class="logo"><span class="logo-mark"></span>BioDraft Lab</a>
+    <nav>
+      <ul>
+        <li><a href="#services">서비스</a></li>
+        <li><a href="#process">진행 프로세스</a></li>
+        <li><a href="#onsite">현장 컨설팅</a></li>
+        <li><a href="#pricing">이용 안내</a></li>
+        <li><a href="#faq">FAQ</a></li>
+      </ul>
+    </nav>
+    <div class="nav-cta">
+      <a href="#apply" class="btn btn-dark-outline">무료 상담 신청</a>
+    </div>
+    <button class="hamburger">☰</button>
+  </div>
+</header>
+
+<section class="hero" id="top">
+  <div class="container hero-grid">
+    <div>
+      <span class="hero-tag">임상 데이터 · Single-cell / Bulk RNA-seq 분석 대행</span>
+      <h1>데이터는 있는데,<br>논문 쓸 <span>시간</span>이 없으신가요?</h1>
+      <p class="sub">임상 데이터와 raw RNA-seq 파일을 보내주시면, 박사급 분석 전문가가 통계·바이오인포매틱스 분석부터 논문 초안·투고 방향 제안까지 대행해 드립니다. 온라인 접수는 물론, 현장 방문 논문 설명·컨설팅도 가능합니다.</p>
+      <div class="hero-cta">
+        <a href="#apply" class="btn btn-primary">데이터 접수하고 견적받기</a>
+        <a href="#onsite" class="btn btn-outline">현장 컨설팅 알아보기</a>
+      </div>
+      <div class="hero-stats">
+        <div><b>4+ yrs</b><span>연구 펠로우 경력</span></div>
+        <div><b>Wet · Dry</b><span>실험부터 통계까지 풀스택</span></div>
+        <div><b>1:1</b><span>맞춤형 분석 &amp; 컨설팅</span></div>
+      </div>
+    </div>
+    <div class="hero-card">
+      <h4>이렇게 진행됩니다</h4>
+      <div class="hero-step">
+        <div class="n">1</div>
+        <div><p>온라인 접수 &amp; 데이터 업로드</p><small>임상 데이터 / FASTQ·h5ad 등</small></div>
+      </div>
+      <div class="hero-step">
+        <div class="n">2</div>
+        <div><p>무료 데이터 검토 &amp; 견적 안내</p><small>1~2 영업일 이내 회신</small></div>
+      </div>
+      <div class="hero-step">
+        <div class="n">3</div>
+        <div><p>분석 진행 (QC → 통계/바이오인포 분석)</p><small>진행 상황 중간 공유</small></div>
+      </div>
+      <div class="hero-step">
+        <div class="n">4</div>
+        <div><p>논문 초안 &amp; 방향 제안서 전달</p><small>Figure, 초록, 저널 추천 포함</small></div>
+      </div>
+      <div class="hero-step">
+        <div class="n">5</div>
+        <div><p>온라인 또는 현장 컨설팅 미팅</p><small>결과 설명 &amp; 투고 전략 논의</small></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="pain">
+  <div class="container">
+    <span class="section-tag center" style="display:block;width:fit-content;">이런 고민, 많으시죠</span>
+    <h2 class="center">연구는 하고 싶은데, 손이 부족합니다</h2>
+    <p class="lead center">임상의, 대학원생, 랩 PI 모두가 겪는 현실적인 문제입니다.</p>
+    <div class="pain-grid">
+      <div class="pain-card">
+        <div class="icon">🧬</div>
+        <h4>Raw 데이터는 쌓였는데</h4>
+        <p>scRNA-seq, bulk RNA-seq 데이터를 받았지만 분석할 시간도, 전담 인력도 없습니다.</p>
+      </div>
+      <div class="pain-card">
+        <div class="icon">📊</div>
+        <h4>통계·바이오인포 지식 부족</h4>
+        <p>임상 데이터는 있지만 어떤 통계 기법을 써야 논문 스토리가 완성되는지 막막합니다.</p>
+      </div>
+      <div class="pain-card">
+        <div class="icon">📝</div>
+        <h4>논문 방향이 안 잡힘</h4>
+        <p>분석 결과는 나왔는데 어떤 저널을, 어떤 스토리라인으로 투고해야 할지 판단이 서지 않습니다.</p>
+      </div>
+      <div class="pain-card">
+        <div class="icon">⏰</div>
+        <h4>임상·실험 업무와 병행 불가</h4>
+        <p>진료, 실험, 강의로 바빠 분석과 집필에 쓸 절대적인 시간이 부족합니다.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="services">
+  <div class="container">
+    <span class="section-tag">SERVICES</span>
+    <h2>데이터 종류에 맞는 맞춤 분석</h2>
+    <p class="lead">임상 데이터부터 오믹스 데이터까지, wet-lab 지식을 갖춘 분석가가 직접 처리합니다.</p>
+    <div class="service-grid">
+      <div class="service-card">
+        <span class="badge">CLINICAL DATA</span>
+        <h3>임상 데이터 분석</h3>
+        <p class="desc">코호트/후향적 임상 데이터를 통계적으로 분석하고, 임상적으로 의미 있는 스토리를 도출합니다.</p>
+        <ul>
+          <li>기술통계 &amp; 그룹 간 비교 분석</li>
+          <li>생존분석 (Kaplan-Meier, Cox regression)</li>
+          <li>다변량 회귀 &amp; 예후 모델링</li>
+          <li>GraphPad Prism / R 기반 시각화</li>
+        </ul>
+      </div>
+      <div class="service-card">
+        <span class="badge">SINGLE-CELL</span>
+        <h3>Single-cell RNA-seq 분석</h3>
+        <p class="desc">Raw FASTQ 또는 h5ad/h5 파일부터 QC, 클러스터링, 세포유형 주석까지 전 과정을 진행합니다.</p>
+        <ul>
+          <li>QC &amp; MAD 기반 필터링 (scverse 기준)</li>
+          <li>Clustering, annotation, DEG 분석</li>
+          <li>Batch correction / scVI, scANVI 통합</li>
+          <li>Trajectory, cell-cell interaction 분석</li>
+        </ul>
+      </div>
+      <div class="service-card">
+        <span class="badge">BULK RNA-SEQ</span>
+        <h3>Bulk RNA-seq &amp; 논문화</h3>
+        <p class="desc">nf-core 기반 표준 파이프라인으로 정량 후, 차등발현·경로분석 및 논문 초안까지 제공합니다.</p>
+        <ul>
+          <li>정렬, 정량 (nf-core/rnaseq)</li>
+          <li>차등발현 (DESeq2/edgeR) &amp; GSEA</li>
+          <li>Figure 제작 &amp; 논문 초안 작성</li>
+          <li>타겟 저널 추천 &amp; 투고 방향 제안</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="process" id="process">
+  <div class="container">
+    <span class="section-tag" style="background:rgba(28,140,124,.18);color:#9fe3d4;">PROCESS</span>
+    <h2>접수부터 논문 초안까지, 6단계</h2>
+    <p class="lead">투명한 진행 상황 공유로 안심하고 맡기실 수 있습니다.</p>
+    <div class="process-track">
+      <div class="process-step"><div class="num">01</div><h4>온라인 접수</h4><p>데이터 종류·연구 목적 입력 &amp; 파일 업로드</p></div>
+      <div class="process-step"><div class="num">02</div><h4>무료 검토·견적</h4><p>데이터 확인 후 분석 범위 &amp; 비용 안내</p></div>
+      <div class="process-step"><div class="num">03</div><h4>계약·데이터 전달</h4><p>보안 채널로 데이터 및 IRB 승인 확인</p></div>
+      <div class="process-step"><div class="num">04</div><h4>분석 수행</h4><p>QC → 통계/바이오인포 분석 → 중간 공유</p></div>
+      <div class="process-step"><div class="num">05</div><h4>초안 작성</h4><p>Figure, 초록, 논문 방향 제안서 전달</p></div>
+      <div class="process-step"><div class="num">06</div><h4>컨설팅 미팅</h4><p>온라인/현장 미팅으로 결과 설명 &amp; 투고 전략</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="onsite" id="onsite">
+  <div class="container onsite-grid">
+    <div>
+      <span class="section-tag">ON-SITE CONSULTING</span>
+      <h2>현장 방문, 대면 컨설팅도 가능합니다</h2>
+      <p class="lead" style="margin-bottom:24px;">온라인 진행이 원칙이지만, 결과 설명·투고 전략 논의는 랩/병원 현장 방문을 통해서도 진행할 수 있습니다.</p>
+      <ul class="onsite-list">
+        <li>
+          <div class="ico">📍</div>
+          <div><h4>현장 방문 결과 설명</h4><p>Figure와 통계 결과를 대면으로 직접 설명해 드립니다.</p></div>
+        </li>
+        <li>
+          <div class="ico">🗣️</div>
+          <div><h4>연구실 세미나 / 랩미팅 참석</h4><p>연구팀 전체를 대상으로 분석 방법론과 결과를 공유합니다.</p></div>
+        </li>
+        <li>
+          <div class="ico">🎯</div>
+          <div><h4>투고 전략 &amp; 저널 선정 컨설팅</h4><p>타겟 저널, 리비전 대응, 리뷰어 대응 전략까지 논의합니다.</p></div>
+        </li>
+        <li>
+          <div class="ico">🔬</div>
+          <div><h4>후속 실험 설계 자문</h4><p>분석 결과를 바탕으로 검증 실험(웻랩) 설계까지 자문합니다.</p></div>
+        </li>
+      </ul>
+    </div>
+    <div class="onsite-visual">
+      <span class="tag">MEETING OPTIONS</span>
+      <h3>편하신 방식으로 미팅을 선택하세요</h3>
+      <p>서울/수도권 지역은 현장 방문이 가능하며, 그 외 지역은 화상 미팅으로 동일한 퀄리티의 컨설팅을 제공합니다.</p>
+      <ul class="onsite-list" style="border-top:1px solid rgba(255,255,255,.15);padding-top:6px;">
+        <li style="border-bottom:1px dashed rgba(255,255,255,.15);">
+          <div class="ico" style="background:rgba(255,255,255,.12);">💻</div>
+          <div><h4 style="color:#fff;">온라인 미팅</h4><p style="color:#c7d4e0;">Zoom/Google Meet, 전국 어디서나 가능</p></div>
+        </li>
+        <li>
+          <div class="ico" style="background:rgba(255,255,255,.12);">🏥</div>
+          <div><h4 style="color:#fff;">현장 방문 미팅</h4><p style="color:#c7d4e0;">서울/수도권 랩·병원 방문 (별도 협의)</p></div>
+        </li>
+      </ul>
+      <a href="#apply" class="btn btn-primary" style="margin-top:22px;width:100%;justify-content:center;">컨설팅 문의하기</a>
+    </div>
+  </div>
+</section>
+
+<section id="pricing">
+  <div class="container">
+    <span class="section-tag">PRICING</span>
+    <h2>이용 안내</h2>
+    <p class="lead">데이터 규모와 분석 범위에 따라 맞춤 견적을 제공합니다. 아래는 대표적인 예시입니다.</p>
+    <div class="pricing-grid">
+      <div class="price-card">
+        <h3>Basic</h3>
+        <div class="price"><b>Custom Quote</b>단일 데이터셋 분석</div>
+        <ul>
+          <li>Bulk RNA-seq QC &amp; 차등발현 분석</li>
+          <li>임상 데이터 기초 통계</li>
+          <li>Figure 3~5종 제작</li>
+          <li>분석 리포트 (PDF)</li>
+        </ul>
+        <a href="#apply" class="btn btn-dark-outline" style="width:100%;justify-content:center;">문의하기</a>
+      </div>
+      <div class="price-card featured">
+        <span class="flag">가장 많이 찾는 구성</span>
+        <h3>Standard</h3>
+        <div class="price"><b>Custom Quote</b>분석 + 논문 방향 제안</div>
+        <ul>
+          <li>Single-cell / Bulk RNA-seq 심층 분석</li>
+          <li>임상 데이터 통합 분석 (생존분석 등)</li>
+          <li>논문 스토리라인 &amp; 초록 초안</li>
+          <li>온라인 컨설팅 미팅 1회 포함</li>
+        </ul>
+        <a href="#apply" class="btn btn-primary" style="width:100%;justify-content:center;">문의하기</a>
+      </div>
+      <div class="price-card">
+        <h3>Premium</h3>
+        <div class="price"><b>Custom Quote</b>논문 초안 + 현장 컨설팅</div>
+        <ul>
+          <li>임상+오믹스 통합 분석</li>
+          <li>논문 초안 전체 작성 (Intro~Discussion)</li>
+          <li>타겟 저널 추천 &amp; 투고 전략</li>
+          <li>현장 방문 컨설팅 포함</li>
+        </ul>
+        <a href="#apply" class="btn btn-dark-outline" style="width:100%;justify-content:center;">문의하기</a>
+      </div>
+    </div>
+    <p class="price-note">* 모든 데이터는 IRB/기관 규정 준수 하에 처리되며, 비밀유지계약(NDA) 체결 후 진행합니다. 정확한 견적은 무료 데이터 검토 후 안내드립니다.</p>
+  </div>
+</section>
+
+<section class="apply" id="apply">
+  <div class="container apply-wrap">
+    <div class="apply-info">
+      <span class="section-tag">GET STARTED</span>
+      <h2>데이터 접수 &amp; 무료 상담 신청</h2>
+      <p>아래 양식을 작성해 주시면 1~2 영업일 이내에 데이터 검토 결과와 견적을 안내해 드립니다. 대용량 raw 파일(FASTQ 등)은 접수 확인 후 별도의 보안 업로드 링크(Google Drive / 전용 서버)를 안내해 드립니다.</p>
+      <div class="contact-line">📧 <b>이메일</b>&nbsp;paperhwi@snu.ac.kr</div>
+      <div class="contact-line">📍 <b>현장 컨설팅</b>&nbsp;서울/수도권 지역 방문 가능</div>
+      <div class="contact-line">🔒 <b>보안</b>&nbsp;NDA 체결 후 데이터 전달, IRB 규정 준수</div>
+    </div>
+    <!--
+      Formspree 연동 방법:
+      1) https://formspree.io 가입 후 새 Form 생성 → Form ID 발급 (예: abcdwxyz)
+      2) 아래 action 값의 YOUR_FORM_ID를 발급받은 ID로 교체
+      3) Formspree 대시보드 > Settings에서 알림받을 이메일이 paperhwi@snu.ac.kr로 되어 있는지 확인
+    -->
+    <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+      <input type="hidden" name="_subject" value="[BioDraft Lab] 새로운 상담 신청이 접수되었습니다">
+      <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
+      <div class="form-row">
+        <div class="form-group">
+          <label>이름 / 소속</label>
+          <input type="text" name="name" placeholder="예: 홍길동 / OO대학교병원" required>
+        </div>
+        <div class="form-group">
+          <label>이메일</label>
+          <input type="email" name="email" placeholder="you@example.com" required>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>연락처</label>
+          <input type="tel" name="phone" placeholder="010-0000-0000">
+        </div>
+        <div class="form-group">
+          <label>희망 미팅 방식</label>
+          <select name="meeting_type">
+            <option>온라인 미팅</option>
+            <option>현장 방문 미팅</option>
+            <option>미정 / 추후 논의</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group full">
+        <label>데이터 종류 (중복 선택 가능)</label>
+        <div class="checkbox-group">
+          <label><input type="checkbox" name="data_type" value="임상 데이터"><span class="chip">임상 데이터</span></label>
+          <label><input type="checkbox" name="data_type" value="Single-cell RNA-seq"><span class="chip">Single-cell RNA-seq</span></label>
+          <label><input type="checkbox" name="data_type" value="Bulk RNA-seq"><span class="chip">Bulk RNA-seq</span></label>
+          <label><input type="checkbox" name="data_type" value="ATAC-seq / Multiome"><span class="chip">ATAC-seq / Multiome</span></label>
+          <label><input type="checkbox" name="data_type" value="기타 오믹스"><span class="chip">기타 오믹스</span></label>
+        </div>
+      </div>
+      <div class="form-group full">
+        <label>IRB(기관생명윤리위원회) 승인 여부</label>
+        <select name="irb_status">
+          <option value="">선택해주세요</option>
+          <option value="IRB 승인 완료">IRB 승인 완료</option>
+          <option value="심사 진행 중 (승인 전)">심사 진행 중 (승인 전)</option>
+          <option value="아직 신청 전 - 자문 필요">아직 신청 전 — 자문 필요</option>
+          <option value="해당 없음 (임상/인체유래물 아님)">해당 없음 (임상데이터·인체유래물 아님)</option>
+        </select>
+        <div class="irb-note">⚠️ 임상 데이터 또는 인체유래물을 다루는 경우, 실제 raw 데이터 전달 전 IRB 승인 확인이 필요합니다. 승인 전이어도 접수 및 프로토콜 자문은 가능합니다.</div>
+      </div>
+      <div class="form-group full">
+        <label>연구 배경 및 요청 사항</label>
+        <textarea name="message" placeholder="예: 대장암 환자 100명 코호트 임상 데이터와 tumor/normal bulk RNA-seq 데이터가 있습니다. 예후 관련 유전자를 찾고 논문 방향을 제안받고 싶습니다."></textarea>
+      </div>
+      <div class="file-note">💡 Raw 데이터 파일(FASTQ, h5ad 등) 업로드 방법은 접수 확인 후 별도로 안내드립니다. 지금은 데이터 개요만 알려주세요.</div>
+
+      <div class="form-group full" style="margin-top:6px;">
+        <details class="privacy-details">
+          <summary>개인정보 수집·이용 안내 <span class="toggle">자세히 보기</span></summary>
+          <div class="privacy-box">
+            <p><b>수집 항목</b> 이름, 소속, 이메일, 연락처, 연구 배경 및 요청 내용, IRB 승인 현황</p>
+            <p><b>수집 목적</b> 상담 신청 확인, 데이터 분석 견적 산정, 컨설팅 일정 조율</p>
+            <p><b>보유 기간</b> 상담 종료 후 6개월간 보관 후 파기 (계약 체결 시 관계 법령에 따른 기간 동안 보관)</p>
+            <p>임상 데이터·인체유래물 관련 raw 파일은 본 접수 단계에서 수집하지 않으며, IRB 승인 확인 후 별도의 보안 채널로만 전달받습니다.</p>
+            <p>귀하는 개인정보 수집·이용에 동의하지 않을 권리가 있으며, 다만 미동의 시 상담 신청 진행이 제한될 수 있습니다.</p>
+          </div>
+        </details>
+        <label class="consent-check">
+          <input type="checkbox" name="privacy_consent" value="동의함" required>
+          <span>위 개인정보 수집 및 이용에 동의합니다. (필수)</span>
+        </label>
+      </div>
+
+      <button type="submit" class="btn btn-primary" style="margin-top:18px;">무료 상담 신청하기</button>
+      <p class="form-disclaimer">제출된 정보와 데이터는 상담 및 분석 목적 외에는 사용되지 않으며, 필요 시 별도 NDA를 체결합니다.</p>
+    </form>
+  </div>
+</section>
+
+<section id="faq">
+  <div class="container" style="max-width:800px;">
+    <span class="section-tag">FAQ</span>
+    <h2>자주 묻는 질문</h2>
+    <div>
+      <details class="faq-item" open>
+        <summary>어떤 데이터를 보내야 하나요?</summary>
+        <p>임상 데이터는 엑셀/CSV 형태의 정형 데이터, RNA-seq은 raw FASTQ 또는 이미 처리된 count matrix, h5ad/h5 파일 모두 접수 가능합니다. 정확히 어떤 형태인지 모르셔도 괜찮습니다 — 접수 후 함께 확인해 드립니다.</p>
+      </details>
+      <details class="faq-item">
+        <summary>IRB 승인이 없어도 접수할 수 있나요?</summary>
+        <p>인체유래물 및 임상정보를 다루는 경우 IRB 승인이 필요합니다. 접수 시 IRB 승인 현황을 함께 확인하며, 승인 전이라면 프로토콜 자문도 가능합니다.</p>
+      </details>
+      <details class="faq-item">
+        <summary>논문 저자 지위(co-authorship)는 어떻게 되나요?</summary>
+        <p>분석 및 집필 기여도에 따라 공동저자 참여 여부를 사전에 협의합니다. 단순 대행 용역과 공동연구 참여 옵션을 모두 제공합니다.</p>
+      </details>
+      <details class="faq-item">
+        <summary>비용은 어떻게 산정되나요?</summary>
+        <p>데이터 규모(샘플 수, 시퀀싱 depth), 분석 복잡도, 논문 집필 범위에 따라 맞춤 견적을 산정합니다. 데이터 검토는 무료이며, 견적 확인 후 진행 여부를 결정하실 수 있습니다.</p>
+      </details>
+      <details class="faq-item">
+        <summary>현장 컨설팅은 어느 지역까지 가능한가요?</summary>
+        <p>서울/수도권은 직접 방문이 가능하며, 그 외 지역은 화상 미팅 또는 별도 협의를 통해 방문 일정을 조율합니다.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="logo"><span class="logo-mark"></span>BioDraft Lab</div>
+        <p>임상 데이터와 오믹스 데이터를 논문으로. Wet-lab부터 Dry-lab까지, 풀스택 바이오 분석 전문가가 함께합니다.</p>
+      </div>
+      <div>
+        <h5>서비스</h5>
+        <ul>
+          <li><a href="#services">임상 데이터 분석</a></li>
+          <li><a href="#services">Single-cell RNA-seq</a></li>
+          <li><a href="#services">Bulk RNA-seq</a></li>
+          <li><a href="#onsite">현장 컨설팅</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>안내</h5>
+        <ul>
+          <li><a href="#process">진행 프로세스</a></li>
+          <li><a href="#pricing">이용 안내</a></li>
+          <li><a href="#faq">FAQ</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Contact</h5>
+        <ul>
+          <li>paperhwi@snu.ac.kr</li>
+          <li>서울/수도권 현장 방문 가능</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 BioDraft Lab. All rights reserved.</span>
+      <span>본 사이트의 모든 데이터는 NDA 및 IRB 규정 하에 안전하게 관리됩니다.</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
