@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>BioDraft | 논문 분석·집필 대행 서비스</title>
+<title data-title-en="BioDraft | Research Data Analysis &amp; Manuscript Drafting Service">BioDraft | 논문 분석·집필 대행 서비스</title>
 <style>
   :root{
     --navy:#0f2942;
@@ -75,6 +75,14 @@
   .nav-cta{display:flex;align-items:center;gap:14px;}
   .nav-cta .btn{padding:10px 20px;font-size:14px;}
   .hamburger{display:none;font-size:26px;background:none;border:none;color:var(--navy);cursor:pointer;}
+
+  /* Language switch */
+  .lang-switch{display:flex;align-items:center;gap:2px;border:1px solid var(--gray-300);border-radius:999px;padding:3px;}
+  .lang-btn{
+    font-size:12.5px;font-weight:700;padding:6px 12px;border-radius:999px;color:var(--gray-600);
+    cursor:pointer;background:transparent;border:none;font-family:inherit;transition:all .15s ease;
+  }
+  .lang-btn.active{background:var(--teal);color:#fff;}
 
   /* Hero */
   .hero{
@@ -291,15 +299,19 @@
     <a href="#top" class="logo"><span class="logo-mark"></span>BioDraft</a>
     <nav>
       <ul>
-        <li><a href="#services">서비스</a></li>
-        <li><a href="#process">진행 프로세스</a></li>
-        <li><a href="#onsite">현장 컨설팅</a></li>
-        <li><a href="#pricing">이용 안내</a></li>
+        <li><a href="#services" data-en="Services">서비스</a></li>
+        <li><a href="#process" data-en="Process">진행 프로세스</a></li>
+        <li><a href="#onsite" data-en="On-site Consulting">현장 컨설팅</a></li>
+        <li><a href="#pricing" data-en="Pricing">이용 안내</a></li>
         <li><a href="#faq">FAQ</a></li>
       </ul>
     </nav>
     <div class="nav-cta">
-      <a href="#apply" class="btn btn-dark-outline">무료 상담 신청</a>
+      <div class="lang-switch">
+        <button type="button" class="lang-btn active" data-lang="ko">KOR</button>
+        <button type="button" class="lang-btn" data-lang="en">ENG</button>
+      </div>
+      <a href="#apply" class="btn btn-dark-outline" data-en="Free Consultation">무료 상담 신청</a>
     </div>
     <button class="hamburger">☰</button>
   </div>
@@ -308,40 +320,40 @@
 <section class="hero" id="top">
   <div class="container hero-grid">
     <div>
-      <span class="hero-tag">임상 데이터 · Single-cell / Bulk RNA-seq 분석 대행</span>
-      <h1>데이터는 있는데,<br>논문 쓸 <span>시간</span>이 없으신가요?</h1>
-      <p class="sub">임상 데이터와 raw data 파일을 보내주시면, 박사급 분석 전문가가 R, Python을 이용한 통계 분석부터 논문 초안·투고 방향 제안까지 대행해 드립니다. 온라인 접수는 물론, 현장 방문 논문 설명·컨설팅도 가능합니다.</p>
+      <span class="hero-tag" data-en="Clinical Data · Single-cell / Bulk RNA-seq Analysis Outsourcing">임상 데이터 · Single-cell / Bulk RNA-seq 분석 대행</span>
+      <h1 data-en="You have the data,<br>but no <span>time</span> to write the paper?">데이터는 있는데,<br>논문 쓸 <span>시간</span>이 없으신가요?</h1>
+      <p class="sub" data-en="Send us your clinical data or raw sequencing files, and a PhD-level analyst will handle everything from statistical analysis in R and Python to manuscript drafts and submission strategy. Apply online, or request an on-site consultation.">임상 데이터와 raw data 파일을 보내주시면, 박사급 분석 전문가가 R, Python을 이용한 통계 분석부터 논문 초안·투고 방향 제안까지 대행해 드립니다. 온라인 접수는 물론, 현장 방문 논문 설명·컨설팅도 가능합니다.</p>
       <div class="hero-cta">
-        <a href="#apply" class="btn btn-primary">데이터 접수하고 견적받기</a>
-        <a href="#onsite" class="btn btn-outline">현장 컨설팅 알아보기</a>
+        <a href="#apply" class="btn btn-primary" data-en="Submit Data &amp; Get a Quote">데이터 접수하고 견적받기</a>
+        <a href="#onsite" class="btn btn-outline" data-en="Explore On-site Consulting">현장 컨설팅 알아보기</a>
       </div>
       <div class="hero-stats">
-        <div><b>서울대학교</b><span>생명과학부 학부 및 대학원</span></div>
-        <div><b>Wet & Dry</b><span>실험부터 통계까지 full stack 경험 다수</span></div>
-        <div><b>1:1</b><span>맞춤형 분석 &amp; 컨설팅</span></div>
+        <div><b data-en="Seoul National University">서울대학교</b><span data-en="School of Biological Sciences, Undergrad &amp; Graduate">생명과학부 학부 및 대학원</span></div>
+        <div><b>Wet &amp; Dry</b><span data-en="Extensive full-stack experience, from bench work to biostatistics">실험부터 통계까지 full stack 경험 다수</span></div>
+        <div><b>1:1</b><span data-en="Personalized Analysis &amp; Consulting">맞춤형 분석 &amp; 컨설팅</span></div>
       </div>
     </div>
     <div class="hero-card">
-      <h4>이렇게 진행됩니다</h4>
+      <h4 data-en="How It Works">이렇게 진행됩니다</h4>
       <div class="hero-step">
         <div class="n">1</div>
-        <div><p>온라인 접수 &amp; 데이터 업로드 </p><small>임상 데이터 / FASTQ·h5ad 등</small></div>
+        <div><p data-en="Online Application &amp; Data Upload">온라인 접수 &amp; 데이터 업로드 </p><small data-en="Clinical data / FASTQ, h5ad, etc.">임상 데이터 / FASTQ·h5ad 등</small></div>
       </div>
       <div class="hero-step">
         <div class="n">2</div>
-        <div><p>무료 데이터 검토 &amp; 견적 안내</p><small>1~2 영업일 이내 회신</small></div>
+        <div><p data-en="Free Data Review &amp; Quote">무료 데이터 검토 &amp; 견적 안내</p><small data-en="Response within 1–2 business days">1~2 영업일 이내 회신</small></div>
       </div>
       <div class="hero-step">
         <div class="n">3</div>
-        <div><p>분석 진행 (QC → 통계 / Bioinformatics 분석)</p><small>진행 상황 중간 공유</small></div>
+        <div><p data-en="Analysis in Progress (QC → Statistics / Bioinformatics)">분석 진행 (QC → 통계 / Bioinformatics 분석)</p><small data-en="Progress updates shared along the way">진행 상황 중간 공유</small></div>
       </div>
       <div class="hero-step">
         <div class="n">4</div>
-        <div><p>논문 초안 &amp; 방향 제안서 전달</p><small>Figure, 초록, 저널 추천 포함</small></div>
+        <div><p data-en="Manuscript Draft &amp; Direction Proposal Delivered">논문 초안 &amp; 방향 제안서 전달</p><small data-en="Includes figures, abstract, and journal recommendations">Figure, 초록, 저널 추천 포함</small></div>
       </div>
       <div class="hero-step">
         <div class="n">5</div>
-        <div><p>온라인 또는 현장 컨설팅 미팅</p><small>결과 설명 &amp; 투고 전략 논의</small></div>
+        <div><p data-en="Online or On-site Consulting Meeting">온라인 또는 현장 컨설팅 미팅</p><small data-en="Results walkthrough &amp; submission strategy discussion">결과 설명 &amp; 투고 전략 논의</small></div>
       </div>
     </div>
   </div>
@@ -349,29 +361,29 @@
 
 <section class="pain">
   <div class="container">
-    <span class="section-tag center" style="display:block;width:fit-content;">이런 고민, 많으시죠</span>
-    <h2 class="center">연구는 하고 싶은데, 손이 부족하네...</h2>
-    <p class="lead center">임상의, 대학원생, 랩 PI 모두가 겪는 현실적인 문제입니다.</p>
+    <span class="section-tag center" style="display:block;width:fit-content;" data-en="Sound familiar?">이런 고민, 많으시죠</span>
+    <h2 class="center" data-en="You want to do the research, but there just aren't enough hands...">연구는 하고 싶은데, 손이 부족하네...</h2>
+    <p class="lead center" data-en="A reality faced by clinicians, graduate students, and lab PIs alike.">임상의, 대학원생, 랩 PI 모두가 겪는 현실적인 문제입니다.</p>
     <div class="pain-grid">
       <div class="pain-card">
         <div class="icon">🧬</div>
-        <h4>Raw data는 쌓였는데...</h4>
-        <p>임상데이터, scRNA-seq, bulk RNA-seq 데이터를 받았지만 분석할 시간도, 전담 인력도 없습니다.</p>
+        <h4 data-en="Raw data is piling up...">Raw data는 쌓였는데...</h4>
+        <p data-en="You have clinical, scRNA-seq, or bulk RNA-seq data, but no time or dedicated staff to analyze it.">임상데이터, scRNA-seq, bulk RNA-seq 데이터를 받았지만 분석할 시간도, 전담 인력도 없습니다.</p>
       </div>
       <div class="pain-card">
         <div class="icon">📊</div>
-        <h4>Statistics·Bioinformatics가 어려운데...</h4>
-        <p>임상 데이터는 있지만 어떤 통계 기법을 써야 논문 스토리가 완성되는지 막막합니다.</p>
+        <h4 data-en="Statistics and bioinformatics feel overwhelming...">Statistics·Bioinformatics가 어려운데...</h4>
+        <p data-en="You have the clinical data, but aren't sure which statistical approach completes the paper's story.">임상 데이터는 있지만 어떤 통계 기법을 써야 논문 스토리가 완성되는지 막막합니다.</p>
       </div>
       <div class="pain-card">
         <div class="icon">📝</div>
-        <h4>논문 방향이 이게 맞을까...</h4>
-        <p>분석 결과는 나왔는데 어떤 저널을, 어떤 스토리라인으로 투고해야 할지 판단이 서지 않습니다.</p>
+        <h4 data-en="Is this the right direction for the paper?">논문 방향이 이게 맞을까...</h4>
+        <p data-en="The analysis is done, but it's unclear which journal or storyline to pursue for submission.">분석 결과는 나왔는데 어떤 저널을, 어떤 스토리라인으로 투고해야 할지 판단이 서지 않습니다.</p>
       </div>
       <div class="pain-card">
         <div class="icon">⏰</div>
-        <h4>임상·실험 업무가 너무 바쁜데...</h4>
-        <p>진료, 실험, 강의로 바빠 분석과 집필에 쓸 절대적인 시간이 부족합니다.</p>
+        <h4 data-en="Clinical and lab work leave no time...">임상·실험 업무가 너무 바쁜데...</h4>
+        <p data-en="Between patient care, experiments, and teaching, there's simply no time left for analysis and writing.">진료, 실험, 강의로 바빠 분석과 집필에 쓸 절대적인 시간이 부족합니다.</p>
       </div>
     </div>
   </div>
@@ -380,49 +392,49 @@
 <section id="services">
   <div class="container">
     <span class="section-tag">SERVICES</span>
-    <h2>데이터 종류에 맞는 맞춤 분석</h2>
-    <p class="lead">임상 데이터부터 오믹스 데이터까지, wet-lab 지식을 갖춘 분석가가 직접 처리합니다. 데이터 제작 전 단계에 실험 목적에 따라 설계를 도와드립니다.</p>
+    <h2 data-en="Tailored Analysis for Every Data Type">데이터 종류에 맞는 맞춤 분석</h2>
+    <p class="lead" data-en="From clinical to omics data, analysts with hands-on wet-lab experience handle it all. We can also help design your experiment before data generation.">임상 데이터부터 오믹스 데이터까지, wet-lab 지식을 갖춘 분석가가 직접 처리합니다. 데이터 제작 전 단계에 실험 목적에 따라 설계를 도와드립니다.</p>
     <div class="service-grid">
       <div class="service-card">
         <span class="badge">CLINICAL DATA</span>
-        <h3>임상 데이터 분석</h3>
-        <p class="desc">모든 종류의 임상 데이터를 통계적으로 분석하고, 임상적으로 의미 있는 스토리를 도출합니다.</p>
+        <h3 data-en="Clinical Data Analysis">임상 데이터 분석</h3>
+        <p class="desc" data-en="Statistical analysis of all types of clinical data to uncover clinically meaningful findings.">모든 종류의 임상 데이터를 통계적으로 분석하고, 임상적으로 의미 있는 스토리를 도출합니다.</p>
         <ul>
-          <li>기술적 통계 &amp; 그룹 간 비교 분석</li>
-          <li>생존분석 (Kaplan-Meier, Cox regression)</li>
-          <li>다변량 회귀 &amp; 예후 모델링</li>
-          <li>GraphPad Prism /Python / R 기반 시각화</li>
-          <li>Biorender 및 Figma를 이용한 Graphic Abstract 제작</li>
-          <li>학회 발표용 포스터 및 PPT file (+발표 대본까지) 제작</li>
+          <li data-en="Descriptive statistics &amp; between-group comparisons">기술적 통계 &amp; 그룹 간 비교 분석</li>
+          <li data-en="Survival analysis (Kaplan-Meier, Cox regression)">생존분석 (Kaplan-Meier, Cox regression)</li>
+          <li data-en="Multivariate regression &amp; prognostic modeling">다변량 회귀 &amp; 예후 모델링</li>
+          <li data-en="Visualization with GraphPad Prism, Python, and R">GraphPad Prism /Python / R 기반 시각화</li>
+          <li data-en="Graphical abstracts created with BioRender and Figma">Biorender 및 Figma를 이용한 Graphic Abstract 제작</li>
+          <li data-en="Conference posters and slide decks (including presentation scripts)">학회 발표용 포스터 및 PPT file (+발표 대본까지) 제작</li>
 
 
         </ul>
       </div>
       <div class="service-card">
         <span class="badge">SINGLE-CELL</span>
-        <h3>Single-cell RNA-seq 분석 </h3>
-        <p class="desc">Raw FASTQ 또는 h5ad/h5 파일부터 QC, 클러스터링, 세포유형 주석까지 전 과정을 진행합니다.</p>
+        <h3 data-en="Single-cell RNA-seq Analysis">Single-cell RNA-seq 분석 </h3>
+        <p class="desc" data-en="Full pipeline from raw FASTQ or h5ad/h5 files through QC, clustering, and cell-type annotation.">Raw FASTQ 또는 h5ad/h5 파일부터 QC, 클러스터링, 세포유형 주석까지 전 과정을 진행합니다.</p>
         <ul>
-          <li>QC &amp; MAD 기반 필터링 (scverse 기준)</li>
-          <li>Clustering (Manual & Unbiased), Cell type Annotation, DEG 분석</li>
-          <li>Batch correction / scVI, scANVI 통합</li>
-          <li>Public dataset을 이용한 분석 혹은 batch integration</li>
-          <li>Trajectory, cell-cell interaction 분석</li>
-          <li>Biorender 및 Figma를 이용한 Graphic Abstract 제작</li>
-          <li>Dataset 생성 전 컨설팅도 가능</li>
+          <li data-en="QC &amp; MAD-based filtering (scverse standard)">QC &amp; MAD 기반 필터링 (scverse 기준)</li>
+          <li data-en="Clustering (manual &amp; unbiased), cell-type annotation, DEG analysis">Clustering (Manual &amp; Unbiased), Cell type Annotation, DEG 분석</li>
+          <li data-en="Batch correction / integration with scVI, scANVI">Batch correction / scVI, scANVI 통합</li>
+          <li data-en="Analysis or batch integration using public datasets">Public dataset을 이용한 분석 혹은 batch integration</li>
+          <li data-en="Trajectory and cell-cell interaction analysis">Trajectory, cell-cell interaction 분석</li>
+          <li data-en="Graphical abstracts created with BioRender and Figma">Biorender 및 Figma를 이용한 Graphic Abstract 제작</li>
+          <li data-en="Consulting available before dataset generation">Dataset 생성 전 컨설팅도 가능</li>
         </ul>
       </div>
       <div class="service-card">
         <span class="badge">BULK RNA-SEQ</span>
-        <h3>Bulk RNA-seq 분석</h3>
-        <p class="desc">nf-core 기반 표준 파이프라인으로 정량 후, 차등발현·경로분석 및 논문 초안까지 제공합니다.</p>
+        <h3 data-en="Bulk RNA-seq Analysis">Bulk RNA-seq 분석</h3>
+        <p class="desc" data-en="Standardized quantification via nf-core, followed by differential expression, pathway analysis, and a manuscript draft.">nf-core 기반 표준 파이프라인으로 정량 후, 차등발현·경로분석 및 논문 초안까지 제공합니다.</p>
         <ul>
-          <li>정렬, 정량 (nf-core/rnaseq)</li>
-          <li>DEG분석 (DESeq2/edgeR) &amp; GSEA</li>
+          <li data-en="Alignment &amp; quantification (nf-core/rnaseq)">정렬, 정량 (nf-core/rnaseq)</li>
+          <li data-en="DEG analysis (DESeq2/edgeR) &amp; GSEA">DEG분석 (DESeq2/edgeR) &amp; GSEA</li>
           <li>Volcano plot &amp; Correlation matrix</li>
-          <li>Figure 제작 &amp; 논문 초안 작성</li>
-          <li>Biorender 및 Figma를 이용한 Graphic Abstract 제작</li>
-          <li>타겟 저널 추천 &amp; 투고 방향 제안</li>
+          <li data-en="Figure preparation &amp; manuscript drafting">Figure 제작 &amp; 논문 초안 작성</li>
+          <li data-en="Graphical abstracts created with BioRender and Figma">Biorender 및 Figma를 이용한 Graphic Abstract 제작</li>
+          <li data-en="Target journal recommendations &amp; submission strategy">타겟 저널 추천 &amp; 투고 방향 제안</li>
         </ul>
       </div>
     </div>
@@ -432,15 +444,15 @@
 <section class="process" id="process">
   <div class="container">
     <span class="section-tag" style="background:rgba(28,140,124,.18);color:#9fe3d4;">PROCESS</span>
-    <h2>접수부터 논문 초안까지, 6단계</h2>
-    <p class="lead">투명한 진행 상황 공유로 안심하고 맡기실 수 있습니다.</p>
+    <h2 data-en="From Intake to Manuscript Draft, in 6 Steps">접수부터 논문 초안까지, 6단계</h2>
+    <p class="lead" data-en="Transparent progress updates every step of the way.">투명한 진행 상황 공유로 안심하고 맡기실 수 있습니다.</p>
     <div class="process-track">
-      <div class="process-step"><div class="num">01</div><h4>온라인 접수</h4><p>데이터 종류·연구 목적 입력 &amp; 파일 업로드</p></div>
-      <div class="process-step"><div class="num">02</div><h4>무료 검토·견적</h4><p>데이터 확인 후 분석 범위 &amp; 비용 안내</p></div>
-      <div class="process-step"><div class="num">03</div><h4>계약·데이터 전달</h4><p>보안 채널로 데이터 및 IRB 승인 확인</p></div>
-      <div class="process-step"><div class="num">04</div><h4>분석 수행</h4><p>QC → 분석 → 중간 상황 공유 및 방향 설정</p></div>
-      <div class="process-step"><div class="num">05</div><h4>초안 작성</h4><p>Figure, 초록, 논문 방향 제안서 전달</p></div>
-      <div class="process-step"><div class="num">06</div><h4>컨설팅 미팅</h4><p>온라인/현장 미팅으로 결과 설명 &amp; 투고 전략 회의</p></div>
+      <div class="process-step"><div class="num">01</div><h4 data-en="Online Intake">온라인 접수</h4><p data-en="Enter data type &amp; research goal, upload files">데이터 종류·연구 목적 입력 &amp; 파일 업로드</p></div>
+      <div class="process-step"><div class="num">02</div><h4 data-en="Free Review &amp; Quote">무료 검토·견적</h4><p data-en="Data reviewed, scope &amp; cost proposed">데이터 확인 후 분석 범위 &amp; 비용 안내</p></div>
+      <div class="process-step"><div class="num">03</div><h4 data-en="Agreement &amp; Data Transfer">계약·데이터 전달</h4><p data-en="Secure data transfer, IRB approval confirmed">보안 채널로 데이터 및 IRB 승인 확인</p></div>
+      <div class="process-step"><div class="num">04</div><h4 data-en="Analysis">분석 수행</h4><p data-en="QC → analysis → interim updates &amp; direction setting">QC → 분석 → 중간 상황 공유 및 방향 설정</p></div>
+      <div class="process-step"><div class="num">05</div><h4 data-en="Draft Writing">초안 작성</h4><p data-en="Figures, abstract, and direction proposal delivered">Figure, 초록, 논문 방향 제안서 전달</p></div>
+      <div class="process-step"><div class="num">06</div><h4 data-en="Consulting Meeting">컨설팅 미팅</h4><p data-en="Online/on-site meeting to review results &amp; plan submission">온라인/현장 미팅으로 결과 설명 &amp; 투고 전략 회의</p></div>
     </div>
   </div>
 </section>
@@ -449,42 +461,42 @@
   <div class="container onsite-grid">
     <div>
       <span class="section-tag">ON-SITE CONSULTING</span>
-      <h2>현장 방문, 대면 컨설팅도 가능합니다</h2>
-      <p class="lead" style="margin-bottom:24px;">온라인 진행이 원칙이지만, 결과 설명·투고 전략 논의는 연구실/병원 등 현장 방문을 통해서도 진행할 수 있습니다.</p>
+      <h2 data-en="In-person Consulting, On-site">현장 방문, 대면 컨설팅도 가능합니다</h2>
+      <p class="lead" style="margin-bottom:24px;" data-en="While the process runs online by default, results reviews and submission strategy discussions can also take place on-site at your lab or hospital.">온라인 진행이 원칙이지만, 결과 설명·투고 전략 논의는 연구실/병원 등 현장 방문을 통해서도 진행할 수 있습니다.</p>
       <ul class="onsite-list">
         <li>
           <div class="ico">📍</div>
-          <div><h4>현장 방문 결과 설명</h4><p>Figure와 통계 결과를 대면으로 직접 설명해 드립니다.</p></div>
+          <div><h4 data-en="On-site Results Presentation">현장 방문 결과 설명</h4><p data-en="Figures and statistical results explained in person.">Figure와 통계 결과를 대면으로 직접 설명해 드립니다.</p></div>
         </li>
         <li>
           <div class="ico">🗣️</div>
-          <div><h4>연구실 세미나 / 랩미팅 참석</h4><p>연구팀 전체를 대상으로 분석 방법론과 결과를 공유합니다.</p></div>
+          <div><h4 data-en="Lab Seminar / Lab Meeting Attendance">연구실 세미나 / 랩미팅 참석</h4><p data-en="Methodology and results shared with your entire research team.">연구팀 전체를 대상으로 분석 방법론과 결과를 공유합니다.</p></div>
         </li>
         <li>
           <div class="ico">🎯</div>
-          <div><h4>투고 전략 &amp; 저널 선정 컨설팅</h4><p>타겟 저널, 리비전 대응, 리뷰어 대응 전략까지 논의합니다.</p></div>
+          <div><h4 data-en="Submission Strategy &amp; Journal Selection">투고 전략 &amp; 저널 선정 컨설팅</h4><p data-en="Covers target journals, revision strategy, and reviewer response.">타겟 저널, 리비전 대응, 리뷰어 대응 전략까지 논의합니다.</p></div>
         </li>
         <li>
           <div class="ico">🔬</div>
-          <div><h4>후속 실험 설계 자문</h4><p>분석 결과를 바탕으로 검증 실험(웻랩) 설계까지 자문합니다.</p></div>
+          <div><h4 data-en="Follow-up Experiment Design Advice">후속 실험 설계 자문</h4><p data-en="Advice on designing validation (wet-lab) experiments based on results.">분석 결과를 바탕으로 검증 실험(웻랩) 설계까지 자문합니다.</p></div>
         </li>
       </ul>
     </div>
     <div class="onsite-visual">
       <span class="tag">MEETING OPTIONS</span>
-      <h3>편하신 방식으로 미팅을 선택하세요</h3>
-      <p>서울/수도권 지역은 현장 방문이 가능하며, 그 외 지역은 화상 미팅으로 동일한 퀄리티의 컨설팅을 제공합니다.</p>
+      <h3 data-en="Choose the Meeting Format That Works for You">편하신 방식으로 미팅을 선택하세요</h3>
+      <p data-en="On-site visits are available in Seoul and the greater metropolitan area; video meetings elsewhere deliver the same quality of consulting.">서울/수도권 지역은 현장 방문이 가능하며, 그 외 지역은 화상 미팅으로 동일한 퀄리티의 컨설팅을 제공합니다.</p>
       <ul class="onsite-list" style="border-top:1px solid rgba(255,255,255,.15);padding-top:6px;">
         <li style="border-bottom:1px dashed rgba(255,255,255,.15);">
           <div class="ico" style="background:rgba(255,255,255,.12);">💻</div>
-          <div><h4 style="color:#fff;">온라인 미팅</h4><p style="color:#c7d4e0;">Zoom/Google Meet, 전국 어디서나 가능</p></div>
+          <div><h4 style="color:#fff;" data-en="Online Meeting">온라인 미팅</h4><p style="color:#c7d4e0;" data-en="Zoom/Google Meet, available anywhere">Zoom/Google Meet, 전국 어디서나 가능</p></div>
         </li>
         <li>
           <div class="ico" style="background:rgba(255,255,255,.12);">🏥</div>
-          <div><h4 style="color:#fff;">현장 방문 미팅</h4><p style="color:#c7d4e0;">서울/수도권 랩·병원 방문 (별도 협의)</p></div>
+          <div><h4 style="color:#fff;" data-en="On-site Meeting">현장 방문 미팅</h4><p style="color:#c7d4e0;" data-en="Visits to labs/hospitals in Seoul metro area (by arrangement)">서울/수도권 랩·병원 방문 (별도 협의)</p></div>
         </li>
       </ul>
-      <a href="#apply" class="btn btn-primary" style="margin-top:22px;width:100%;justify-content:center;">컨설팅 문의하기</a>
+      <a href="#apply" class="btn btn-primary" style="margin-top:22px;width:100%;justify-content:center;" data-en="Inquire About Consulting">컨설팅 문의하기</a>
     </div>
   </div>
 </section>
@@ -492,45 +504,45 @@
 <section id="pricing">
   <div class="container">
     <span class="section-tag">PRICING</span>
-    <h2>이용 안내</h2>
-    <p class="lead">데이터 규모와 분석 범위에 따라 맞춤 견적을 제공합니다. 아래는 대표적인 예시입니다.</p>
+    <h2 data-en="Pricing">이용 안내</h2>
+    <p class="lead" data-en="Custom quotes based on data scale and analysis scope. Below are representative examples.">데이터 규모와 분석 범위에 따라 맞춤 견적을 제공합니다. 아래는 대표적인 예시입니다.</p>
     <div class="pricing-grid">
       <div class="price-card">
         <h3>Basic</h3>
-        <div class="price"><b>Custom Quote</b>단일 데이터셋 분석</div>
+        <div class="price"><b>Custom Quote</b><span data-en="Single Dataset Analysis">단일 데이터셋 분석</span></div>
         <ul>
-          <li>Bulk RNA-seq QC &amp; 차등발현 분석</li>
-          <li>임상 데이터 기초 통계</li>
-          <li>Figure 3~5종 제작 (300DPI 이상 Publication ready quality)</li>
-          <li>분석 리포트 (PDF)</li>
+          <li data-en="Bulk RNA-seq QC &amp; differential expression analysis">Bulk RNA-seq QC &amp; 차등발현 분석</li>
+          <li data-en="Basic clinical data statistics">임상 데이터 기초 통계</li>
+          <li data-en="3–5 publication-ready figures (300 DPI+)">Figure 3~5종 제작 (300DPI 이상 Publication ready quality)</li>
+          <li data-en="Analysis report (PDF)">분석 리포트 (PDF)</li>
         </ul>
-        <a href="#apply" class="btn btn-dark-outline" style="width:100%;justify-content:center;">문의하기</a>
+        <a href="#apply" class="btn btn-dark-outline" style="width:100%;justify-content:center;" data-en="Inquire">문의하기</a>
       </div>
       <div class="price-card featured">
-        <span class="flag">가장 많이 찾는 구성</span>
+        <span class="flag" data-en="Most Popular">가장 많이 찾는 구성</span>
         <h3>Standard</h3>
-        <div class="price"><b>Custom Quote</b>분석 + 논문 방향 제안</div>
+        <div class="price"><b>Custom Quote</b><span data-en="Analysis + Manuscript Direction">분석 + 논문 방향 제안</span></div>
         <ul>
-          <li>Single-cell / Bulk RNA-seq 심층 분석</li>
-          <li>임상 데이터 통합 분석 (생존분석 등)</li>
-          <li>논문 스토리라인 &amp; 초록 초안</li>
-          <li>온라인 컨설팅 미팅 1회 포함</li>
+          <li data-en="In-depth Single-cell / Bulk RNA-seq analysis">Single-cell / Bulk RNA-seq 심층 분석</li>
+          <li data-en="Integrated clinical data analysis (survival analysis, etc.)">임상 데이터 통합 분석 (생존분석 등)</li>
+          <li data-en="Manuscript storyline &amp; abstract draft">논문 스토리라인 &amp; 초록 초안</li>
+          <li data-en="Includes one online consulting session">온라인 컨설팅 미팅 1회 포함</li>
         </ul>
-        <a href="#apply" class="btn btn-primary" style="width:100%;justify-content:center;">문의하기</a>
+        <a href="#apply" class="btn btn-primary" style="width:100%;justify-content:center;" data-en="Inquire">문의하기</a>
       </div>
       <div class="price-card">
         <h3>Premium</h3>
-        <div class="price"><b>Custom Quote</b>논문 초안 + 현장 컨설팅</div>
+        <div class="price"><b>Custom Quote</b><span data-en="Manuscript Draft + On-site Consulting">논문 초안 + 현장 컨설팅</span></div>
         <ul>
-          <li>임상+오믹스 통합 분석</li>
-          <li>논문 초안 전체 작성 (Intro~Discussion)</li>
-          <li>타겟 저널 추천 &amp; 투고 전략</li>
-          <li>현장 방문 컨설팅 포함</li>
+          <li data-en="Integrated clinical + omics analysis">임상+오믹스 통합 분석</li>
+          <li data-en="Full manuscript draft (Intro–Discussion)">논문 초안 전체 작성 (Intro~Discussion)</li>
+          <li data-en="Target journal recommendations &amp; submission strategy">타겟 저널 추천 &amp; 투고 전략</li>
+          <li data-en="Includes on-site consulting visit">현장 방문 컨설팅 포함</li>
         </ul>
-        <a href="#apply" class="btn btn-dark-outline" style="width:100%;justify-content:center;">문의하기</a>
+        <a href="#apply" class="btn btn-dark-outline" style="width:100%;justify-content:center;" data-en="Inquire">문의하기</a>
       </div>
     </div>
-    <p class="price-note">* 모든 데이터는 IRB/기관 규정 준수 하에 처리되며, 비밀유지계약(Nondisclosure Agreement;NDA) 체결 후 진행합니다. 정확한 견적은 무료 데이터 검토 후 안내드립니다.</p>
+    <p class="price-note" data-en="* All data is handled in compliance with IRB/institutional regulations, and work begins only after a Non-Disclosure Agreement (NDA) is signed. Exact quotes are provided after a free data review.">* 모든 데이터는 IRB/기관 규정 준수 하에 처리되며, 비밀유지계약(Nondisclosure Agreement;NDA) 체결 후 진행합니다. 정확한 견적은 무료 데이터 검토 후 안내드립니다.</p>
   </div>
 </section>
 
@@ -538,11 +550,11 @@
   <div class="container apply-wrap">
     <div class="apply-info">
       <span class="section-tag">GET STARTED</span>
-      <h2>데이터 접수 &amp; 무료 상담 신청</h2>
-      <p>아래 양식을 작성해 주시면 1~2 영업일 이내에 데이터 검토 결과와 견적을 안내해 드립니다. 대용량 raw 파일(FASTQ 등)은 접수 확인 후 별도의 보안 업로드 링크(Google Drive / 전용 서버)를 안내해 드립니다.</p>
-      <div class="contact-line">📧 <b>이메일</b>&nbsp;scott1506@naver.com</div>
-      <div class="contact-line">📍 <b>현장 컨설팅</b>&nbsp;서울/수도권 지역 방문 가능</div>
-      <div class="contact-line">🔒 <b>보안</b>&nbsp;NDA 체결 후 데이터 전달, IRB 규정 준수</div>
+      <h2 data-en="Submit Your Data &amp; Request a Free Consultation">데이터 접수 &amp; 무료 상담 신청</h2>
+      <p data-en="Fill out the form below and we'll send you a data review and quote within 1–2 business days. For large raw files (FASTQ, etc.), a secure upload link (Google Drive / dedicated server) will be provided after intake.">아래 양식을 작성해 주시면 1~2 영업일 이내에 데이터 검토 결과와 견적을 안내해 드립니다. 대용량 raw 파일(FASTQ 등)은 접수 확인 후 별도의 보안 업로드 링크(Google Drive / 전용 서버)를 안내해 드립니다.</p>
+      <div class="contact-line">📧 <b data-en="Email">이메일</b>&nbsp;scott1506@naver.com</div>
+      <div class="contact-line">📍 <b data-en="On-site Consulting">현장 컨설팅</b>&nbsp;<span data-en="Visits available in Seoul metro area">서울/수도권 지역 방문 가능</span></div>
+      <div class="contact-line">🔒 <b data-en="Security">보안</b>&nbsp;<span data-en="Data shared after NDA; IRB compliant">NDA 체결 후 데이터 전달, IRB 규정 준수</span></div>
     </div>
 
     <form action="https://formspree.io/f/xojoorpy" method="POST">
@@ -550,74 +562,74 @@
       <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
       <div class="form-row">
         <div class="form-group">
-          <label>이름 / 소속</label>
-          <input type="text" name="name" placeholder="예: 홍길동 / OO대학교병원" required>
+          <label data-en="Name / Affiliation">이름 / 소속</label>
+          <input type="text" name="name" placeholder="예: 홍길동 / OO대학교병원" data-en-placeholder="e.g., John Doe / XYZ University Hospital" required>
         </div>
         <div class="form-group">
-          <label>이메일</label>
+          <label data-en="Email">이메일</label>
           <input type="email" name="email" placeholder="you@example.com" required>
         </div>
       </div>
       <div class="form-row">
         <div class="form-group">
-          <label>연락처</label>
-          <input type="tel" name="phone" placeholder="010-0000-0000">
+          <label data-en="Phone">연락처</label>
+          <input type="tel" name="phone" placeholder="010-0000-0000" data-en-placeholder="+82 10-0000-0000">
         </div>
         <div class="form-group">
-          <label>희망 미팅 방식</label>
+          <label data-en="Preferred Meeting Type">희망 미팅 방식</label>
           <select name="meeting_type">
-            <option>온라인 미팅</option>
-            <option>현장 방문 미팅</option>
-            <option>미정 / 추후 논의</option>
+            <option data-en="Online Meeting">온라인 미팅</option>
+            <option data-en="On-site Meeting">현장 방문 미팅</option>
+            <option data-en="Undecided / To be discussed">미정 / 추후 논의</option>
           </select>
         </div>
       </div>
       <div class="form-group full">
-        <label>데이터 종류 (중복 선택 가능)</label>
+        <label data-en="Data Type (select all that apply)">데이터 종류 (중복 선택 가능)</label>
         <div class="checkbox-group">
-          <label><input type="checkbox" name="data_type" value="임상 데이터"><span class="chip">임상 데이터</span></label>
+          <label><input type="checkbox" name="data_type" value="임상 데이터"><span class="chip" data-en="Clinical Data">임상 데이터</span></label>
           <label><input type="checkbox" name="data_type" value="Single-cell RNA-seq"><span class="chip">Single-cell RNA-seq</span></label>
           <label><input type="checkbox" name="data_type" value="Bulk RNA-seq"><span class="chip">Bulk RNA-seq</span></label>
           <label><input type="checkbox" name="data_type" value="Spatial-seq / ATAC-seq / Multiome"><span class="chip">ATAC-seq / Multiome</span></label>
-          <label><input type="checkbox" name="data_type" value="기타 오믹스"><span class="chip">기타 오믹스</span></label>
+          <label><input type="checkbox" name="data_type" value="기타 오믹스"><span class="chip" data-en="Other Omics">기타 오믹스</span></label>
         </div>
       </div>
       <div class="form-group full">
-        <label>IRB(기관생명윤리위원회) 승인 여부</label>
+        <label data-en="IRB (Institutional Review Board) Approval Status">IRB(기관생명윤리위원회) 승인 여부</label>
         <select name="irb_status">
-          <option value="">선택해주세요</option>
-          <option value="IRB 승인 완료">IRB 승인 완료</option>
-          <option value="심사 진행 중 (승인 전)">심사 진행 중 (승인 전)</option>
-          <option value="아직 신청 전 - 자문 필요">아직 신청 전 — 자문 필요</option>
-          <option value="해당 없음 (임상/인체유래물 아님)">해당 없음 (임상데이터·인체유래물 아님)</option>
+          <option value="" data-en="Please select">선택해주세요</option>
+          <option value="IRB 승인 완료" data-en="IRB approved">IRB 승인 완료</option>
+          <option value="심사 진행 중 (승인 전)" data-en="Under review (not yet approved)">심사 진행 중 (승인 전)</option>
+          <option value="아직 신청 전 - 자문 필요" data-en="Not yet submitted — advice needed">아직 신청 전 — 자문 필요</option>
+          <option value="해당 없음 (임상/인체유래물 아님)" data-en="Not applicable (no clinical/human-derived data)">해당 없음 (임상데이터·인체유래물 아님)</option>
         </select>
-        <div class="irb-note">⚠️ 임상 데이터 또는 인체유래물을 다루는 경우, 실제 raw 데이터 전달 전 IRB 승인 확인이 필요합니다. 승인 전이어도 접수 및 프로토콜 자문은 가능합니다.</div>
+        <div class="irb-note" data-en="⚠️ If your project involves clinical data or human-derived material, IRB approval must be confirmed before raw data is transferred. You can still submit an inquiry or request protocol advice before approval.">⚠️ 임상 데이터 또는 인체유래물을 다루는 경우, 실제 raw 데이터 전달 전 IRB 승인 확인이 필요합니다. 승인 전이어도 접수 및 프로토콜 자문은 가능합니다.</div>
       </div>
       <div class="form-group full">
-        <label>연구 배경 및 요청 사항</label>
-        <textarea name="message" placeholder="예: 대장암 환자 100명 코호트 임상 데이터와 tumor/normal bulk RNA-seq 데이터가 있습니다. 예후 관련 유전자를 찾고 논문 방향을 제안받고 싶습니다."></textarea>
+        <label data-en="Research Background &amp; Request">연구 배경 및 요청 사항</label>
+        <textarea name="message" placeholder="예: 대장암 환자 100명 코호트 임상 데이터와 tumor/normal bulk RNA-seq 데이터가 있습니다. 예후 관련 유전자를 찾고 논문 방향을 제안받고 싶습니다." data-en-placeholder="e.g., I have clinical data from a cohort of 100 colorectal cancer patients along with tumor/normal bulk RNA-seq data. I'd like to identify prognosis-related genes and get direction for a manuscript."></textarea>
       </div>
-      <div class="file-note">💡 Raw 데이터 파일(FASTQ, h5ad 등) 업로드 방법은 접수 확인 후 별도로 안내드립니다. 지금은 데이터 개요만 알려주세요.</div>
+      <div class="file-note" data-en="💡 Instructions for uploading raw data files (FASTQ, h5ad, etc.) will be provided separately after intake. For now, just describe your data.">💡 Raw 데이터 파일(FASTQ, h5ad 등) 업로드 방법은 접수 확인 후 별도로 안내드립니다. 지금은 데이터 개요만 알려주세요.</div>
 
       <div class="form-group full" style="margin-top:6px;">
         <details class="privacy-details">
-          <summary>개인정보 수집·이용 안내 <span class="toggle">자세히 보기</span></summary>
+          <summary><span data-en="Privacy Notice">개인정보 수집·이용 안내</span> <span class="toggle" data-en="View details">자세히 보기</span></summary>
           <div class="privacy-box">
-            <p><b>수집 항목</b> 이름, 소속, 이메일, 연락처, 연구 배경 및 요청 내용, IRB 승인 현황</p>
-            <p><b>수집 목적</b> 상담 신청 확인, 데이터 분석 견적 산정, 컨설팅 일정 조율</p>
-            <p><b>보유 기간</b> 상담 종료 후 6개월간 보관 후 파기 (계약 체결 시 관계 법령에 따른 기간 동안 보관)</p>
-            <p>임상 데이터·인체유래물 관련 raw 파일은 본 접수 단계에서 수집하지 않으며, IRB 승인 확인 후 별도의 보안 채널로만 전달받습니다.</p>
-            <p>귀하는 개인정보 수집·이용에 동의하지 않을 권리가 있으며, 다만 미동의 시 상담 신청 진행이 제한될 수 있습니다.</p>
+            <p data-en="<b>Items Collected</b> Name, affiliation, email, phone number, research background and request details, IRB approval status"><b>수집 항목</b> 이름, 소속, 이메일, 연락처, 연구 배경 및 요청 내용, IRB 승인 현황</p>
+            <p data-en="<b>Purpose of Collection</b> Confirming consultation requests, estimating analysis quotes, scheduling consultations"><b>수집 목적</b> 상담 신청 확인, 데이터 분석 견적 산정, 컨설팅 일정 조율</p>
+            <p data-en="<b>Retention Period</b> Retained for 6 months after consultation ends and then destroyed (or per applicable law if a contract is signed)"><b>보유 기간</b> 상담 종료 후 6개월간 보관 후 파기 (계약 체결 시 관계 법령에 따른 기간 동안 보관)</p>
+            <p data-en="Raw files related to clinical data or human-derived material are not collected at this intake stage, and will only be transferred through a separate secure channel after IRB approval is confirmed.">임상 데이터·인체유래물 관련 raw 파일은 본 접수 단계에서 수집하지 않으며, IRB 승인 확인 후 별도의 보안 채널로만 전달받습니다.</p>
+            <p data-en="You have the right to decline consent to the collection and use of your personal information; however, declining may limit our ability to process your consultation request.">귀하는 개인정보 수집·이용에 동의하지 않을 권리가 있으며, 다만 미동의 시 상담 신청 진행이 제한될 수 있습니다.</p>
           </div>
         </details>
         <label class="consent-check">
           <input type="checkbox" name="privacy_consent" value="동의함" required>
-          <span>위 개인정보 수집 및 이용에 동의합니다. (필수)</span>
+          <span data-en="I agree to the collection and use of my personal information above. (Required)">위 개인정보 수집 및 이용에 동의합니다. (필수)</span>
         </label>
       </div>
 
-      <button type="submit" class="btn btn-primary" style="margin-top:18px;">무료 상담 신청하기</button>
-      <p class="form-disclaimer">제출된 정보와 데이터는 상담 및 분석 목적 외에는 사용되지 않으며, 필요 시 별도 NDA를 체결합니다.</p>
+      <button type="submit" class="btn btn-primary" style="margin-top:18px;" data-en="Submit Free Consultation Request">무료 상담 신청하기</button>
+      <p class="form-disclaimer" data-en="Submitted information and data are used only for consultation and analysis purposes, and a separate NDA will be signed if needed.">제출된 정보와 데이터는 상담 및 분석 목적 외에는 사용되지 않으며, 필요 시 별도 NDA를 체결합니다.</p>
     </form>
   </div>
 </section>
@@ -625,27 +637,27 @@
 <section id="faq">
   <div class="container" style="max-width:800px;">
     <span class="section-tag">FAQ</span>
-    <h2>자주 묻는 질문</h2>
+    <h2 data-en="Frequently Asked Questions">자주 묻는 질문</h2>
     <div>
       <details class="faq-item" open>
-        <summary>어떤 데이터를 보내야 하나요?</summary>
-        <p>임상 데이터는 엑셀/CSV 형태의 정형 데이터, RNA-seq은 raw FASTQ 또는 이미 처리된 count matrix, h5ad/h5 파일 모두 접수 가능합니다. 정확히 어떤 형태인지 모르셔도 괜찮습니다 — 접수 후 함께 확인해 드립니다.</p>
+        <summary data-en="What kind of data should I send?">어떤 데이터를 보내야 하나요?</summary>
+        <p data-en="Clinical data can be structured Excel/CSV files. For RNA-seq, we accept raw FASTQ files, processed count matrices, or h5ad/h5 files. You don't need to know exactly what format you have — we'll help you figure it out after intake.">임상 데이터는 엑셀/CSV 형태의 정형 데이터, RNA-seq은 raw FASTQ 또는 이미 처리된 count matrix, h5ad/h5 파일 모두 접수 가능합니다. 정확히 어떤 형태인지 모르셔도 괜찮습니다 — 접수 후 함께 확인해 드립니다.</p>
       </details>
       <details class="faq-item">
-        <summary>IRB 승인이 없어도 접수할 수 있나요?</summary>
-        <p>인체유래물 및 임상정보를 다루는 경우 IRB 승인이 필요합니다. 접수 시 IRB 승인 현황을 함께 확인하며, 승인 전이라면 프로토콜 자문도 가능합니다.</p>
+        <summary data-en="Can I apply without IRB approval?">IRB 승인이 없어도 접수할 수 있나요?</summary>
+        <p data-en="IRB approval is required when working with human-derived material or clinical information. We'll check your IRB status at intake, and can provide protocol advice even before approval is granted.">인체유래물 및 임상정보를 다루는 경우 IRB 승인이 필요합니다. 접수 시 IRB 승인 현황을 함께 확인하며, 승인 전이라면 프로토콜 자문도 가능합니다.</p>
       </details>
       <details class="faq-item">
-        <summary>논문 저자 지위(co-authorship)는 어떻게 되나요?</summary>
-        <p>분석 및 집필 기여도에 따라 공동저자 참여 여부를 사전에 협의합니다. 단순 대행 용역과 공동연구 참여 옵션을 모두 제공합니다.</p>
+        <summary data-en="How is co-authorship handled?">논문 저자 지위(co-authorship)는 어떻게 되나요?</summary>
+        <p data-en="Co-authorship is discussed upfront based on the level of contribution to analysis and writing. We offer both a straightforward service arrangement and a collaborative co-research option.">분석 및 집필 기여도에 따라 공동저자 참여 여부를 사전에 협의합니다. 단순 대행 용역과 공동연구 참여 옵션을 모두 제공합니다.</p>
       </details>
       <details class="faq-item">
-        <summary>비용은 어떻게 산정되나요?</summary>
-        <p>데이터 규모(샘플 수, 시퀀싱 depth), 분석 복잡도, 논문 집필 범위에 따라 맞춤 견적을 산정합니다. 데이터 검토는 무료이며, 견적 확인 후 진행 여부를 결정하실 수 있습니다.</p>
+        <summary data-en="How is pricing determined?">비용은 어떻게 산정되나요?</summary>
+        <p data-en="Quotes are customized based on data scale (sample size, sequencing depth), analysis complexity, and the scope of manuscript writing. Data review is free, and you can decide whether to proceed after seeing the quote.">데이터 규모(샘플 수, 시퀀싱 depth), 분석 복잡도, 논문 집필 범위에 따라 맞춤 견적을 산정합니다. 데이터 검토는 무료이며, 견적 확인 후 진행 여부를 결정하실 수 있습니다.</p>
       </details>
       <details class="faq-item">
-        <summary>현장 컨설팅은 어느 지역까지 가능한가요?</summary>
-        <p>서울/수도권은 직접 방문이 가능하며, 그 외 지역은 화상 미팅 또는 별도 협의를 통해 방문 일정을 조율합니다.</p>
+        <summary data-en="Which areas are covered for on-site consulting?">현장 컨설팅은 어느 지역까지 가능한가요?</summary>
+        <p data-en="We can visit in person within Seoul and the greater metropolitan area. For other regions, we offer video meetings or can arrange a visit by separate discussion.">서울/수도권은 직접 방문이 가능하며, 그 외 지역은 화상 미팅 또는 별도 협의를 통해 방문 일정을 조율합니다.</p>
       </details>
     </div>
   </div>
@@ -656,22 +668,22 @@
     <div class="footer-grid">
       <div>
         <div class="logo"><span class="logo-mark"></span>BioDraft</div>
-        <p>임상 데이터와 오믹스 데이터를 논문으로. Wet-lab부터 Dry-lab까지, Full stack 바이오 분석 전문가가 함께합니다.</p>
+        <p data-en="Turning clinical and omics data into published papers. A full-stack bio analysis expert, from wet-lab to dry-lab.">임상 데이터와 오믹스 데이터를 논문으로. Wet-lab부터 Dry-lab까지, Full stack 바이오 분석 전문가가 함께합니다.</p>
       </div>
       <div>
-        <h5>서비스</h5>
+        <h5 data-en="Services">서비스</h5>
         <ul>
-          <li><a href="#services">임상 데이터 분석</a></li>
+          <li><a href="#services" data-en="Clinical Data Analysis">임상 데이터 분석</a></li>
           <li><a href="#services">Single-cell RNA-seq</a></li>
           <li><a href="#services">Bulk RNA-seq</a></li>
-          <li><a href="#onsite">현장 컨설팅</a></li>
+          <li><a href="#onsite" data-en="On-site Consulting">현장 컨설팅</a></li>
         </ul>
       </div>
       <div>
-        <h5>안내</h5>
+        <h5 data-en="Info">안내</h5>
         <ul>
-          <li><a href="#process">진행 프로세스</a></li>
-          <li><a href="#pricing">이용 안내</a></li>
+          <li><a href="#process" data-en="Process">진행 프로세스</a></li>
+          <li><a href="#pricing" data-en="Pricing">이용 안내</a></li>
           <li><a href="#faq">FAQ</a></li>
         </ul>
       </div>
@@ -679,16 +691,58 @@
         <h5>Contact</h5>
         <ul>
           <li>scott1506@naver.com</li>
-          <li>서울/수도권 현장 방문 가능</li>
+          <li data-en="On-site visits available in Seoul metro area">서울/수도권 현장 방문 가능</li>
         </ul>
       </div>
     </div>
     <div class="footer-bottom">
       <span>© 2026 BioDraft. All rights reserved.</span>
-      <span>본 사이트의 모든 데이터는 NDA 및 IRB 규정 하에 안전하게 관리됩니다.</span>
+      <span data-en="All data on this site is securely managed in compliance with NDA and IRB regulations.">본 사이트의 모든 데이터는 NDA 및 IRB 규정 하에 안전하게 관리됩니다.</span>
     </div>
   </div>
 </footer>
+
+<script>
+(function(){
+  var STORAGE_KEY = 'biodraft_lang';
+
+  function applyLang(lang){
+    var isEn = (lang === 'en');
+    document.documentElement.lang = isEn ? 'en' : 'ko';
+
+    document.querySelectorAll('[data-en]').forEach(function(el){
+      if(el.dataset.ko === undefined){ el.dataset.ko = el.innerHTML; }
+      el.innerHTML = isEn ? el.dataset.en : el.dataset.ko;
+    });
+
+    document.querySelectorAll('[data-en-placeholder]').forEach(function(el){
+      if(el.dataset.koPlaceholder === undefined){ el.dataset.koPlaceholder = el.getAttribute('placeholder') || ''; }
+      el.setAttribute('placeholder', isEn ? el.dataset.enPlaceholder : el.dataset.koPlaceholder);
+    });
+
+    var titleEl = document.querySelector('title[data-title-en]');
+    if(titleEl){
+      if(titleEl.dataset.titleKo === undefined){ titleEl.dataset.titleKo = titleEl.textContent; }
+      titleEl.textContent = isEn ? titleEl.dataset.titleEn : titleEl.dataset.titleKo;
+    }
+
+    document.querySelectorAll('.lang-btn').forEach(function(btn){
+      btn.classList.toggle('active', btn.dataset.lang === lang);
+    });
+
+    try{ localStorage.setItem(STORAGE_KEY, lang); }catch(e){}
+  }
+
+  document.addEventListener('DOMContentLoaded', function(){
+    var saved = 'ko';
+    try{ saved = localStorage.getItem(STORAGE_KEY) || 'ko'; }catch(e){}
+    applyLang(saved);
+    document.querySelectorAll('.lang-btn').forEach(function(btn){
+      btn.addEventListener('click', function(){ applyLang(btn.dataset.lang); });
+    });
+  });
+})();
+</script>
 
 </body>
 </html>
