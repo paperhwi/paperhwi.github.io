@@ -1,4 +1,4 @@
-# BioDraft Lab
+# MediBioDraft 
 
 임상 데이터와 raw single-cell / bulk RNA-seq 데이터를 받아 통계·바이오인포매틱스 분석을 대행하고, 논문 초안 및 투고 방향을 제안하는 연구 분석 대행 서비스 사이트입니다. 온라인 접수와 함께 현장 방문 컨설팅도 지원합니다.
 
@@ -18,40 +18,12 @@
 5. 논문 초안 및 방향 제안서 전달 (Figure, 초록, 타겟 저널 추천)
 6. 온라인 또는 현장 컨설팅 미팅
 
-## 파일 구성
-
-```
-index.html   # 랜딩페이지 전체 (HTML/CSS 단일 파일, 별도 빌드 과정 없음)
-README.md    # 프로젝트 소개 및 배포 안내
-```
-
-## 로컬에서 확인하기
-
-별도 서버 없이 `index.html` 파일을 브라우저로 바로 열어 확인할 수 있습니다.
-
-## GitHub Pages 배포
-
-1. 이 저장소를 GitHub에 push (main 브랜치 기준)
-2. 저장소 **Settings → Pages** 이동
-3. Source를 `Deploy from a branch`, Branch를 `main` / `root`로 설정
-4. 잠시 후 `https://<계정명>.github.io/<저장소명>` 주소로 접속 가능
-5. 커스텀 도메인을 사용하려면 같은 화면의 Custom domain에 도메인 입력 후, 도메인 등록업체에서 CNAME(또는 A레코드) 설정
-
-## 상담 접수 폼 (Formspree) 연동
-
-`index.html` 내 `<form action="https://formspree.io/f/YOUR_FORM_ID" ...>` 부분을 실제 Formspree Form ID로 교체해야 폼 제출이 정상 작동합니다.
-
-1. [formspree.io](https://formspree.io) 가입 후 새 Form 생성
-2. 발급된 Form ID를 `YOUR_FORM_ID` 자리에 교체
-3. Formspree 대시보드에서 알림 수신 이메일이 `paperhwi@snu.ac.kr`로 지정되어 있는지 확인
-4. 대용량 raw 데이터 파일(FASTQ, h5ad 등)은 폼으로 받지 않으며, 접수 확인 후 별도 보안 업로드 링크를 안내하는 방식입니다.
-
 ## 개인정보 및 IRB 안내
 
 - 접수 폼에 개인정보 수집·이용 동의(필수 체크박스)가 포함되어 있습니다.
 - 임상 데이터/인체유래물을 다루는 경우 IRB(기관생명윤리위원회) 승인 여부를 접수 단계에서 확인하며, 승인 전이라도 프로토콜 자문 접수는 가능합니다.
 
-## 커스터마이징 참고
+## 문의 
 
-- 브랜드명(`BioDraft Lab`), 색상, 요금 구성, 접수 폼 항목은 `index.html` 내 해당 섹션을 직접 수정하면 됩니다.
-- 문의: paperhwi@snu.ac.kr
+- 홈페이지 주소: paperhwi.github.io
+- 이메일 : scott1506@naver.com 
